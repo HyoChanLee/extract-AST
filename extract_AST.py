@@ -8,7 +8,7 @@ c_code = """
 parser = c_parser.CParser()
 ast = parser.parse(c_code)
 
-# 함수의 개수, 함수들의 리턴타입, 함수의 이름, 파라미터의 타입과 변수명, if 조건문의 개수 추출
+# 함수의 개수, 함수들의 리턴타입, 함수의 이름, 파라미터의 타입과 변수명, if문의 개수 추출
 functions = []
 
 class FuncDefVisitor(c_ast.NodeVisitor):
@@ -33,7 +33,6 @@ class FuncDefVisitor(c_ast.NodeVisitor):
 func_def_visitor = FuncDefVisitor()
 func_def_visitor.visit(ast)
 
-# 결과 출력
 for func in functions:
     print(func["name"])
     print(func["return_type"])
